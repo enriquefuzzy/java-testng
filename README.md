@@ -42,6 +42,8 @@ Right click inside CucumberRunnerTests.java and select `Run 'CucumberRunnerTests
 
 Uncomment `maven-surefire-plugin` configuration in `pom.xml` to force Cucumber options from `testng.xml`
 
+WebDriver is initialized and torn down before/after each test by using Hooks.java
+
 ### MVN Execution Commands
 
 Execute default tests with `mvn clean test`
