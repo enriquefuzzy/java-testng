@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import java.net.URI;
 import java.util.HashMap;
 
+// Basic test for RestAssured, will be updated to be laid out better
 public class ApiTest {
     String baseUrl = "https://reqres.in/api";
     @Test

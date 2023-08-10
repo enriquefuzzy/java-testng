@@ -3,7 +3,7 @@ Feature: Automate sample API requests using https://reqres.in/
 
   Background: User generates token for Authorisation
 
-  @users
+  @users @WIP
   Scenario: Verify authorized user can get a list of users
     Given A list of books are available
     When I add a book to my reading list
