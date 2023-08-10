@@ -18,17 +18,22 @@ public class GoogleSearchSteps {
     }
 
     @When("I search Google for {string}")
-    public void i_search_google_for(String string) {
+    public void i_search_google_for(String pet) {
         WebElement el = driver.findElement(By.cssSelector("[name=q]"));
-        el.sendKeys("Dogs", Keys.RETURN);
+        el.sendKeys(pet, Keys.RETURN);
     }
 
     @Then("I should see search results for {string}")
-    public void i_should_see_search_results_for(String string) {
+    public void i_should_see_search_results_for(String search) {
         WebElement title = driver.findElement(By.cssSelector("[data-attrid=title]"));
-        Assert.assertEquals("Dog", title.getText());
         String url = driver.getCurrentUrl();
-        Assert.assertTrue(url.contains("/search?q=Dogs"));
+        if (search.equals("Dogs") || search.equals("dogs")) {
+            Assert.assertEquals("Dog", title.getText());
+            Assert.assertTrue(url.contains("/search?q=Dogs"));
+        } else if (search.equals("Cats") || search.equals("cats")) {
+            Assert.assertEquals("Cat", title.getText());
+            Assert.assertTrue(url.contains("/search?q=Cats"));
+        }
         driver.quit();
     }
 }

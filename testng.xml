@@ -1,3 +1,5 @@
+<!--This configuration is not used when it's commented out in pom-->
+<!--Use mvn test to execute tests-->
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TestSuite">
     <test name="Test">
@@ -6,3 +8,12 @@
         </classes>
     </test>
 </suite>
+
+<!--<suite name="TestSuite">-->
+<!--<test name="Test">-->
+<!--    <parameter name="cucumber.options" value="&#45;&#45;tags @tagName" />-->
+<!--    <classes>-->
+<!--        <class name="testRunner.CucumberRunnerTests" />-->
+<!--    </classes>-->
+<!--</test>-->
+<!--</suite>-->

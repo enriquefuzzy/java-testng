@@ -35,4 +35,15 @@ Refresh the project every time the pom.xml is updated by right-clicking the sour
 
 ## Executing tests
 
-Execute tests with `mvn clean test`
+Default cucumber feature location and stepDefinition location are set in CucumberRunnerTests.java.
+Cucumber tags can be overridden by being included in the `mvn test` command.
+
+Right click inside CucumberRunnerTests.java and select `Run 'CucumberRunnerTests'` to execute tests as defined in CucumberRunnerTests.java
+
+Uncomment `maven-surefire-plugin` configuration in `pom.xml` to force Cucumber options from `testng.xml`
+
+### MVN Execution Commands
+
+Execute default tests with `mvn clean test`
+
+Execute specific tests via cucumber tag with `mvn clean test -Dcucumber.filter.tags="@regression"`
