@@ -1,4 +1,4 @@
-@regression
+@web @regression
 Feature: Search for terms on Google
 
   @dog
