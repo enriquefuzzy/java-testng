@@ -6,14 +6,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class GoogleSearchSteps {
     WebDriver driver;
 
+    // Initialize and tear down WebDriver with Hooks
+    public GoogleSearchSteps() {
+        driver = Hooks.driver;
+    }
+
     @Given("I am on the Google search page")
     public void i_am_on_the_google_search_page() {
-        driver = new ChromeDriver();
         driver.get("https://www.google.com/");
     }
 
@@ -34,6 +37,5 @@ public class GoogleSearchSteps {
             Assert.assertEquals("Cat", title.getText());
             Assert.assertTrue(url.contains("/search?q=Cats"));
         }
-        driver.quit();
     }
 }
