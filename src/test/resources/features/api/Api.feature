@@ -4,9 +4,37 @@ Feature: Automate sample API requests using https://reqres.in/
   Background: User generates token for Authorisation
 
   @users @WIP
-  Scenario: Verify authorized user can get a list of users
-    Given A list of books are available
-    When I add a book to my reading list
-    Then the book is added
-    When I remove a book from my reading list
-    Then the book is removed
+  Scenario: Verify unauthorized user can get a list of all users
+    Given the endpoint is "/users"
+    When I send a "GET" request
+    Then the response status code should be 200
+    And the get users body is valid
+
+  Scenario: Verify unauthorized user can create a user
+    Given the endpoint is "/users"
+    When I send a "POST" request
+    Then the response status code should be 201
+    And the post users body is valid
+
+  Scenario: Verify unauthorized user can get a user
+    Given the endpoint is "/users/2"
+    When I send a "GET" request
+    Then the response status code should be 200
+    And the post users body is valid
+
+  Scenario: Verify unauthorized user can put a user
+    Given the endpoint is "/users/2"
+    When I send a "PUT" request
+    Then the response status code should be 200
+    And the post users body is valid
+
+  Scenario: Verify unauthorized user can patch a user
+    Given the endpoint is "/users/2"
+    When I send a "PATCH" request
+    Then the response status code should be 200
+    And the post users body is valid
+
+  Scenario: Verify unauthorized user can delete a user
+    Given the endpoint is "/users/3"
+    When I send a "DELETE" request
+    Then the response status code should be 204
