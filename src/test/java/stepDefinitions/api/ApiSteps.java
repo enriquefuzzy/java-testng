@@ -7,12 +7,14 @@ import static org.hamcrest.Matchers.*;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 
 public class ApiSteps {
     private Response response;
+    private RequestSpecification requestSpec;
 
     @Given("the endpoint is {string}")
     public void the_endpoint_is(String url) {
@@ -22,13 +24,31 @@ public class ApiSteps {
 
     @When("I send a {string} request")
     public void i_send_a_request(String http_method) throws Exception {
+        HashMap data = new HashMap();
         switch (http_method) {
             case "GET":
-                response = RestAssured.get(baseURI);
+                response = RestAssured.when().get(baseURI);
+                break;
             case "POST":
-                System.out.println("POST");
+                data.put("name", "Enrique");
+                data.put("job", "QA Automation Engineer");
+                response = RestAssured.given()
+                            .contentType("application/json")
+                            .body(data)
+                        .when()
+                            .post(baseURI);
+                break;
+            case "PUT":
+                System.out.println("PUT");
+                break;
+            case "PATCH":
+                System.out.println("PATCH");
+                break;
+            case "DELETE":
+                System.out.println("DELETE");
+                break;
             default:
-                throw new Exception("Invalid HTTP method");
+                throw new Exception("HTTP method not implemented");
         }
     }
 
@@ -40,8 +60,29 @@ public class ApiSteps {
 
     @Then("the get users body is valid")
     public void the_get_users_body_is_valid() {
-        response.then().log().body();
-        response.then().body("page", equalTo(1));
-        response.then().body("data[0].first_name", equalTo("George"));
+        response.then()
+                .log().body()
+                .body("page", equalTo(1))
+                .body("data[0].first_name", equalTo("George"));
+    }
+
+    @Then("the post user body is valid")
+    public void the_post_user_body_is_valid() {
+        response.then()
+                .log().body()
+                .body("name", equalTo("Enrique"))
+                .body("job", equalTo("QA Automation Engineer"))
+                .body("id", notNullValue())
+                .body("createdAt", notNullValue());
+    }
+
+    @Then("the get user body is valid")
+    public void the_get_user_body_is_valid() {
+        response.then()
+                .log().body()
+                .body("data.id", equalTo(2))
+                .body("data.first_name", equalTo("Janet"))
+                .body("data.last_name", equalTo("Weaver"))
+                .body("data.avatar", startsWith("https://"));
     }
 }

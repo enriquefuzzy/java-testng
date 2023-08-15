@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import io.restassured.RestAssured;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.cucumber.java.After;
@@ -19,4 +20,11 @@ public class Hooks {
     public void tear_down() {
         driver.quit();
     }
+
+//    @After("@api")
+//    public void rest_assured_reset() {
+//        RestAssured.reset();
+//        System.out.println("Reset rest assured");
+//    }
+
 }

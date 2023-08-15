@@ -3,7 +3,6 @@ Feature: Automate sample API requests using https://reqres.in/
 
   Background: User generates token for Authorisation
 
-  @users @WIP
   Scenario: Verify unauthorized user can get a list of all users
     Given the endpoint is "/users"
     When I send a "GET" request
@@ -14,26 +13,29 @@ Feature: Automate sample API requests using https://reqres.in/
     Given the endpoint is "/users"
     When I send a "POST" request
     Then the response status code should be 201
-    And the post users body is valid
+    And the post user body is valid
 
   Scenario: Verify unauthorized user can get a user
     Given the endpoint is "/users/2"
     When I send a "GET" request
     Then the response status code should be 200
-    And the post users body is valid
+    And the get user body is valid
 
+  @WIP
   Scenario: Verify unauthorized user can put a user
     Given the endpoint is "/users/2"
     When I send a "PUT" request
     Then the response status code should be 200
-    And the post users body is valid
+    And the put user body is valid
 
+  @WIP
   Scenario: Verify unauthorized user can patch a user
     Given the endpoint is "/users/2"
     When I send a "PATCH" request
     Then the response status code should be 200
-    And the post users body is valid
+    And the patch user body is valid
 
+  @WIP
   Scenario: Verify unauthorized user can delete a user
     Given the endpoint is "/users/3"
     When I send a "DELETE" request
