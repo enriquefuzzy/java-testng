@@ -22,7 +22,7 @@
         <cucumber-jvm-deps-version>1.0.6</cucumber-jvm-deps-version>
         <hamcrest-version>2.2</hamcrest-version>
         <gherkin-version>26.2.0</gherkin-version>
-        <rest-assured-version>5.3.1</rest-assured-version>
+        <rest-assured-version>4.5.1</rest-assured-version>
     </properties>
 
     <dependencies>
@@ -109,33 +109,40 @@
         </dependency>
 
         <!--Rest Assured dependencies-->
+        <!--Without exclusion a warning is displayed for Maven 5.3.1-->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>${rest-assured-version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>json-path</artifactId>
-            <version>${rest-assured-version}</version>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.rest-assured</groupId>-->
+<!--            <artifactId>json-path</artifactId>-->
+<!--            <version>${rest-assured-version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>xml-path</artifactId>
-            <version>${rest-assured-version}</version>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.rest-assured</groupId>-->
+<!--            <artifactId>xml-path</artifactId>-->
+<!--            <version>${rest-assured-version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>json-schema-validator</artifactId>
-            <version>${rest-assured-version}</version>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.rest-assured</groupId>-->
+<!--            <artifactId>json-schema-validator</artifactId>-->
+<!--            <version>${rest-assured-version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/org.json/json -->
         <dependency>
@@ -144,13 +151,13 @@
             <version>20230618</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.github.scribejava/scribejava-apis -->
-        <dependency>
-            <groupId>com.github.scribejava</groupId>
-            <artifactId>scribejava-apis</artifactId>
-            <version>8.3.3</version>
-            <scope>runtime</scope>
-        </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.github.scribejava/scribejava-apis &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.github.scribejava</groupId>-->
+<!--            <artifactId>scribejava-apis</artifactId>-->
+<!--            <version>8.3.3</version>-->
+<!--            <scope>runtime</scope>-->
+<!--        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>

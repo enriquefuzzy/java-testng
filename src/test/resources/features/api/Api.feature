@@ -1,7 +1,5 @@
-@api
+@api @regression
 Feature: Automate sample API requests using https://reqres.in/
-
-  Background: User generates token for Authorisation
 
   Scenario: Verify unauthorized user can get a list of all users
     Given the endpoint is "/users"

@@ -10,9 +10,8 @@ Created in IntelliJ
 - Maven 3.8.5
 - Chromedriver
 
-### pom.xml
-
-Dependencies (see `pom.xml` for versions):
+### Dependencies (see `pom.xml` for versions):
+Selenium dependencies:
 - selenium-java
 - testng
 - cucumber-core
@@ -24,6 +23,11 @@ Dependencies (see `pom.xml` for versions):
 - gherkin
 - slf4j-api
 - slf4j-simple
+
+REST Assured dependencies:
+- rest-assured
+- json
+- gson
 
 Plugins:
 - maven-compiler-plugin
@@ -49,3 +53,5 @@ WebDriver is initialized and torn down before/after each test by using Hooks.jav
 Execute default tests with `mvn clean test`
 
 Execute specific tests via cucumber tag with `mvn clean test -Dcucumber.filter.tags="@regression"`
+
+Execute API tests only with `mvn clean test -Dcucumber.filter.tags="@api"`
