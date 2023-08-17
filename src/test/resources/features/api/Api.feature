@@ -21,21 +21,18 @@ Feature: Automate sample API requests using https://reqres.in/
     Then the response status code should be 200
     And the get user body is valid
 
-  @WIP
   Scenario: Verify unauthorized user can put a user
     Given the endpoint is "/users/2"
     When I send a "PUT" request
     Then the response status code should be 200
     And the put user body is valid
 
-  @WIP
   Scenario: Verify unauthorized user can patch a user
     Given the endpoint is "/users/2"
     When I send a "PATCH" request
     Then the response status code should be 200
     And the patch user body is valid
 
-  @WIP
   Scenario: Verify unauthorized user can delete a user
     Given the endpoint is "/users/3"
     When I send a "DELETE" request

@@ -39,13 +39,25 @@ public class ApiSteps {
                             .post(baseURI);
                 break;
             case "PUT":
-                System.out.println("PUT");
+                data.put("name", "Oingo");
+                data.put("job", "Boingo");
+                response = RestAssured.given()
+                            .header("Content-Type", "application/json")
+                            .body(data)
+                        .when()
+                            .put(baseURI);
                 break;
             case "PATCH":
-                System.out.println("PATCH");
+                data.put("name", "Oingo");
+                data.put("job", "Boingo");
+                response = RestAssured.given()
+                            .contentType("application/json")
+                            .body(data)
+                        .when()
+                            .patch(baseURI);
                 break;
             case "DELETE":
-                System.out.println("DELETE");
+                response = RestAssured.when().delete(baseURI);
                 break;
             default:
                 throw new Exception("HTTP method not implemented");
@@ -84,5 +96,24 @@ public class ApiSteps {
                 .body("data.first_name", equalTo("Janet"))
                 .body("data.last_name", equalTo("Weaver"))
                 .body("data.avatar", startsWith("https://"));
+    }
+
+    @Then("the put user body is valid")
+    public void the_put_user_body_is_valid() {
+        response.then()
+                .log().body()
+                .body("name", equalTo("Oingo"))
+                .body("job", equalTo("Boingo"))
+                .body("updatedAt", notNullValue())
+                .header("Content-Type", "application/json; charset=utf-8");
+    }
+
+    @Then("the patch user body is valid")
+    public void the_patch_user_body_is_valid() {
+        response.then()
+                .log().body()
+                .body("name", equalTo("Oingo"))
+                .body("job", equalTo("Boingo"))
+                .body("updatedAt", notNullValue());
     }
 }
